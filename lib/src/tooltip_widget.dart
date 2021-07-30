@@ -50,24 +50,27 @@ class ToolTipWidget extends StatefulWidget {
   static late bool isArrowUp;
   final VoidCallback? onTooltipTap;
   final EdgeInsets? contentPadding;
+  final bool? isTooltipAbove;
 
-  ToolTipWidget(
-      {this.position,
-      this.offset,
-      this.screenSize,
-      this.title,
-      this.description,
-      this.animationOffset,
-      this.titleTextStyle,
-      this.descTextStyle,
-      this.container,
-      this.tooltipColor,
-      this.textColor,
-      this.showArrow,
-      this.contentHeight,
-      this.contentWidth,
-      this.onTooltipTap,
-      this.contentPadding = const EdgeInsets.symmetric(vertical: 8)});
+  ToolTipWidget({
+    this.position,
+    this.offset,
+    this.screenSize,
+    this.title,
+    this.description,
+    this.animationOffset,
+    this.titleTextStyle,
+    this.descTextStyle,
+    this.container,
+    this.tooltipColor,
+    this.textColor,
+    this.showArrow,
+    this.contentHeight,
+    this.contentWidth,
+    this.onTooltipTap,
+    this.contentPadding = const EdgeInsets.symmetric(vertical: 8),
+    this.isTooltipAbove,
+  });
 
   @override
   _ToolTipWidgetState createState() => _ToolTipWidgetState();
@@ -83,6 +86,9 @@ class _ToolTipWidgetState extends State<ToolTipWidget> {
   }
 
   String findPositionForContent(Offset position) {
+    if (widget.isTooltipAbove != null) {
+      return widget.isTooltipAbove! ? 'ABOVE' : 'BELOW';
+    }
     if (isCloseToTopOrBottom(position)) {
       return 'ABOVE';
     } else {
