@@ -61,13 +61,13 @@ class Showcase extends StatefulWidget {
   final bool? disposeOnTap;
   final bool disableAnimation;
   final EdgeInsets overlayPadding;
-  final bool isTooltipAbove;
+  final bool? isTooltipAbove;
 
   const Showcase({
     required this.key,
     required this.child,
     required this.description,
-    required this.isTooltipAbove,
+    this.isTooltipAbove,
     this.title,
     this.shapeBorder,
     this.overlayColor = Colors.black,
@@ -107,7 +107,7 @@ class Showcase extends StatefulWidget {
     required this.container,
     required this.height,
     required this.width,
-    required this.isTooltipAbove,
+    this.isTooltipAbove,
     this.title,
     this.description,
     this.shapeBorder,
